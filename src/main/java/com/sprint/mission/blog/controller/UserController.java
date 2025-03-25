@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/api/users/register")
+    @PostMapping("/register")
     public ResponseEntity<UserRegisterResponse> signUp(@RequestBody @Valid UserRegisterRequest signUpRequest) {
         return ResponseEntity.ok(userService.register(signUpRequest));
     }
 
-    @PostMapping("/api/users/login")
+    @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         return ResponseEntity.ok(userService.login(loginRequest));
     }
